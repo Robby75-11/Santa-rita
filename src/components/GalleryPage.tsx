@@ -35,7 +35,7 @@ import img29 from "../assets/images/fb6a88c4-c34c-4817-94ee-3e2379b957ee.jpeg";
 const images = [
   img28, img1, img2, img3, img4, img5, img7, img6, img12, img14, img13, img10,
   img11, img16, img20, img9, img17, img18, img15, img19, img23, img8, img29,
-  img24, img28, img26, img25, img27, img21, img22,
+  img24, img26, img25, img27, img21, img22,
 ];
 
 const GalleryPage: React.FC = () => {

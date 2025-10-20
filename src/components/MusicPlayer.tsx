@@ -1,4 +1,3 @@
-// ✅ MusicPlayer.tsx
 import React, { useRef, useEffect } from "react";
 
 interface MusicPlayerProps {
@@ -12,11 +11,10 @@ const MusicPlayer: React.FC<MusicPlayerProps> = ({ audioSrc, isPlaying }) => {
   useEffect(() => {
     const audio = audioRef.current;
     if (!audio) return;
-
     audio.loop = true;
-    audio.muted = false;
 
     if (isPlaying) {
+      audio.muted = false; // sblocca volume
       audio.play().catch((err) => console.warn("Play bloccato:", err));
     } else {
       audio.pause();

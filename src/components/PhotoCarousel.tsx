@@ -35,10 +35,13 @@ const PhotoCarousel: React.FC<PhotoCarouselProps> = ({ images, interval = 4000 }
           </Carousel.Item>
         ))}
       </Carousel>
+       {/* Wrapper centrato */}
+      <div className="d-flex justify-content-center mt-3">
       <Button onClick={togglePause} className="mt-2">
         {paused ? "Riprendi" : "Pausa"}
       </Button>
     </div>
+</div>
   );
 };
 

@@ -1,0 +1,22 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+/* 🔹 Rimuove il bordo tratteggiato del focus dal carosello e dalle immagini */
+.carousel:focus,
+.carousel-item:focus,
+.carousel img:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* 🔹 Rimuove qualsiasi bordo che Bootstrap possa aggiungere ai controlli */
+.carousel-control-prev:focus,
+.carousel-control-next:focus,
+.carousel-indicators button:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}

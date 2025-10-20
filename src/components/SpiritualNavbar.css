@@ -1,0 +1,32 @@
+.glass-navbar {
+  background: rgba(30, 30, 30, 0.55);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  transition: background 0.3s ease;
+}
+
+.navbar-brand span {
+  color: #f8f9fa;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.nav-link {
+  font-size: 1.05rem;
+  letter-spacing: 0.5px;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #ffc107 !important; /* dorato */
+  transform: translateY(-2px);
+}
+
+.navbar-toggler {
+  border: none;
+}
+
+.bi {
+  vertical-align: middle;
+}

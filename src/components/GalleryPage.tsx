@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 
 import img1 from "../assets/images/Collage 01.jpg";
@@ -30,6 +30,7 @@ import img25 from "../assets/images/Immagine WhatsApp 2025-10-19 ore 13.39.57_86
 import img27 from "../assets/images/Santa Rita da Cascia🌹22 Maggio.jpeg";
 import img21 from "../assets/images/5c2c5308-0d0f-49f6-b0b3-8018e92600a8.jpeg";
 import img29 from "../assets/images/fb6a88c4-c34c-4817-94ee-3e2379b957ee.jpeg";
+import "./gallery.css"
 
 const images = [
    img1, img2, img3, img4, img5, img7, img6, img12, img14, img13, img10,
@@ -38,14 +39,22 @@ const images = [
 ];
 
 const GalleryPage: React.FC = () => {
+   const [lightboxImg, setLightboxImg] = useState<string | null>(null);
+
+  const openLightbox = (img: string) => setLightboxImg(img);
+  const closeLightbox = () => setLightboxImg(null);
+
   return (
+
     <Container className="mt-5 mb-5">
       <h2 className="text-center mb-4 text-pri
       mary">📸 Galleria Fotografica</h2>
       <Row xs={1} sm={2} md={3} lg={4} className="g-3">
         {images.map((img, index) => (
           <Col key={index}>
-            <div className="gallery-image-wrapper">
+            <div className="gallery-image-wrapper" 
+            onClick={() => openLightbox(img)}
+            >
               <img
                 src={img}
                 alt={`Foto ${index + 1}`}
@@ -55,6 +64,11 @@ const GalleryPage: React.FC = () => {
           </Col>
         ))}
       </Row>
+       {lightboxImg && (
+        <div className="lightbox" onClick={closeLightbox}>
+          <img src={lightboxImg} alt="Ingrandita" />
+        </div>
+      )}
     </Container>
   );
 };

@@ -39,11 +39,24 @@ const images = [
 ];
 
 const GalleryPage: React.FC = () => {
-   const [lightboxImg, setLightboxImg] = useState<string | null>(null);
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
-  const openLightbox = (img: string) => setLightboxImg(img);
-  const closeLightbox = () => setLightboxImg(null);
+  const openLightbox = (index: number) => setLightboxIndex(index);
+  const closeLightbox = () => setLightboxIndex(null);
 
+  const prevImage = (e: React.MouseEvent) => {
+    e.stopPropagation(); // evita che chiuda la lightbox
+    if (lightboxIndex !== null) {
+      setLightboxIndex((lightboxIndex - 1 + images.length) % images.length);
+    }
+  };
+
+  const nextImage = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (lightboxIndex !== null) {
+      setLightboxIndex((lightboxIndex + 1) % images.length);
+    }
+  };
   return (
 
     <Container className="mt-5 mb-5">
@@ -53,7 +66,7 @@ const GalleryPage: React.FC = () => {
         {images.map((img, index) => (
           <Col key={index}>
             <div className="gallery-image-wrapper" 
-            onClick={() => openLightbox(img)}
+            onClick={() => openLightbox(index)}
             >
               <img
                 src={img}
@@ -64,9 +77,15 @@ const GalleryPage: React.FC = () => {
           </Col>
         ))}
       </Row>
-       {lightboxImg && (
+    {lightboxIndex !== null && (
         <div className="lightbox" onClick={closeLightbox}>
-          <img src={lightboxImg} alt="Ingrandita" />
+          <button className="lightbox-prev" onClick={prevImage}>
+            ◀
+          </button>
+          <img src={images[lightboxIndex]} alt="Ingrandita" />
+          <button className="lightbox-next" onClick={nextImage}>
+            ▶
+          </button>
         </div>
       )}
     </Container>
